@@ -13,7 +13,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   final _obsidianService = ObsidianService();
   bool _obsidianEnabled = false;
   String? _vaultPath;
-  String _targetFolder = 'LinkCapture';
+  String _targetFolder = 'LinkCollector';
   List<String> _availableVaults = [];
   List<String> _vaultFolders = [];
   bool _isLoadingVaults = false;

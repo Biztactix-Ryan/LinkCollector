@@ -239,7 +239,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: isDark ? const Color(0xFF0F172A) : null,
       appBar: AppBar(
         title: Text(
-          'Link Capture',
+          'LinkCollector',
           style: TextStyle(
             fontWeight: FontWeight.w600,
             color: isDark ? Colors.white : null,
@@ -342,34 +342,79 @@ class _HomeScreenState extends State<HomeScreen> {
                     ? const Center(child: CircularProgressIndicator())
                     : _filteredLinks.isEmpty
                         ? Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.link_off,
-                              size: 64,
-                              color: isDark ? Colors.grey[600] : Colors.grey.shade400,
-                            ),
-                            const SizedBox(height: 16),
-                            Text(
-                              _searchController.text.isEmpty
-                                  ? 'No saved links yet'
-                                  : 'No links found',
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: isDark ? Colors.grey[400] : Colors.grey.shade600,
-                                fontWeight: FontWeight.w500,
+                        child: Padding(
+                          padding: const EdgeInsets.all(32.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(24),
+                                decoration: BoxDecoration(
+                                  color: isDark ? Colors.grey[800]?.withValues(alpha: 0.3) : Colors.grey[100],
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Icon(
+                                  _searchController.text.isEmpty ? Icons.link : Icons.search_off,
+                                  size: 48,
+                                  color: isDark ? Colors.grey[500] : Colors.grey.shade500,
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              'Share links from other apps to save them here',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.grey.shade500,
+                              const SizedBox(height: 24),
+                              Text(
+                                _searchController.text.isEmpty
+                                    ? 'Ready to collect links!'
+                                    : 'No links found',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: isDark ? Colors.grey[300] : Colors.grey.shade700,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
-                            ),
-                          ],
+                              const SizedBox(height: 8),
+                              Text(
+                                _searchController.text.isEmpty
+                                    ? 'Share links from other apps to start building your collection'
+                                    : 'Try adjusting your search terms',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: isDark ? Colors.grey[500] : Colors.grey.shade500,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                              if (_searchController.text.isEmpty) ...[
+                                const SizedBox(height: 32),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                                  decoration: BoxDecoration(
+                                    color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                                    borderRadius: BorderRadius.circular(20),
+                                    border: Border.all(
+                                      color: theme.colorScheme.primary.withValues(alpha: 0.3),
+                                    ),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(
+                                        Icons.share,
+                                        size: 16,
+                                        color: theme.colorScheme.primary,
+                                      ),
+                                      const SizedBox(width: 8),
+                                      Text(
+                                        'Tip: Use the share button in any app',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: theme.colorScheme.primary,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ],
+                          ),
                         ),
                       )
                     : RefreshIndicator(
@@ -390,6 +435,14 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+      floatingActionButton: _filteredLinks.isNotEmpty ? FloatingActionButton(
+        onPressed: _testAddLink,
+        backgroundColor: theme.colorScheme.primary,
+        foregroundColor: Colors.white,
+        elevation: 4,
+        child: const Icon(Icons.add),
+        tooltip: 'Add Link',
+      ) : null,
     );
   }
 

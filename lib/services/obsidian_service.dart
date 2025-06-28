@@ -36,7 +36,7 @@ class ObsidianService {
   
   Future<String> get targetFolder async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(_targetFolderKey) ?? 'LinkCapture';
+    return prefs.getString(_targetFolderKey) ?? 'LinkCollector';
   }
   
   Future<void> setTargetFolder(String folder) async {

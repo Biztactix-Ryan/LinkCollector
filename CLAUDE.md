@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-LinkCapture is a Flutter mobile application for capturing and saving links from other Android apps. It provides share extension functionality, metadata extraction, local storage, and Obsidian vault integration.
+LinkCollector is a Flutter mobile application for capturing and saving links from other Android apps. It provides share extension functionality, metadata extraction, local storage, and Obsidian vault integration.
 
 ## Development Commands
 
@@ -54,7 +54,7 @@ flutter analyze
 - Storage permissions required for Obsidian integration
 
 ### Obsidian Integration
-- Links saved as markdown files in `{vault}/LinkCapture/`
+- Links saved as markdown files in `{vault}/LinkCollector/`
 - Files include frontmatter with metadata
 - Vault detection looks in `/storage/emulated/0/`
 - Manual vault selection available via file browser
@@ -83,7 +83,7 @@ flutter analyze
 ### Testing Obsidian Integration
 1. Grant storage permissions
 2. Ensure vault exists in accessible location
-3. Check LinkCapture folder creation
+3. Check LinkCollector folder creation
 4. Verify markdown file format
 
 ### Running on Device
