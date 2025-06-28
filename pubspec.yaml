@@ -48,6 +48,11 @@ dependencies:
   http: ^1.2.2
   html: ^0.15.6
   
+  # Enhanced web scraping
+  dio: ^5.4.0  # Advanced HTTP client
+  metadata_fetch: ^0.4.1  # Specialized metadata extraction
+  beautiful_soup_dart: ^0.3.0  # BeautifulSoup-like HTML parsing
+  
   # File operations
   path_provider: ^2.1.5
   permission_handler: ^11.4.0
